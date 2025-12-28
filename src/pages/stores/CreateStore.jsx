@@ -4,6 +4,14 @@ import DashboardLayout from "../../components/layout/Dashboard";
 import { ArrowLeft02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
+/* Mock users for assignment (Admin assigns store) */
+const MOCK_USERS = [
+  { id: 1, name: "John Manager", role: "MANAGER" },
+  { id: 2, name: "Rahul Manager", role: "MANAGER" },
+  { id: 3, name: "Emily Employee", role: "EMPLOYEE" },
+  { id: 4, name: "Anita Employee", role: "EMPLOYEE" },
+];
+
 export default function CreateStore() {
   const navigate = useNavigate();
 
@@ -15,6 +23,7 @@ export default function CreateStore() {
     contact: "",
     hours: "",
     status: "ACTIVE",
+    assignedUserId: "",
   });
 
   const handleChange = (e) => {
@@ -25,7 +34,6 @@ export default function CreateStore() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Frontend only for now
     console.log("New Store:", form);
     alert("Store created (frontend only)");
 
@@ -35,20 +43,18 @@ export default function CreateStore() {
   return (
     <DashboardLayout>
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => navigate(-1)}
-            className="text-xl pr-2 py-1 cursor-pointer"
-          >
-            <HugeiconsIcon icon={ArrowLeft02Icon} />
-          </button>
-          <h1 className="text-2xl font-semibold">Add Store</h1>
-        </div>
+      <div className="flex items-center gap-2 mb-6">
+        <button
+          onClick={() => navigate(-1)}
+          className="text-xl pr-2 py-1 cursor-pointer"
+        >
+          <HugeiconsIcon icon={ArrowLeft02Icon} />
+        </button>
+        <h1 className="text-2xl font-semibold">Add Store</h1>
       </div>
 
       {/* Form Card */}
-      <div className="min-w-full bg-white border border-gray-200 rounded-xl p-6 max-w-5xl">
+      <div className="max-w-full bg-white border border-gray-200 rounded-xl p-6 ">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -62,7 +68,8 @@ export default function CreateStore() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full border border-gray-300 rounded-md px-3 py-2
+                           focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
@@ -75,13 +82,36 @@ export default function CreateStore() {
                 name="type"
                 value={form.type}
                 onChange={handleChange}
-                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full border border-gray-300 rounded-md px-3 py-2
+                           focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option>Grocery Store</option>
                 <option>Electronics Store</option>
                 <option>Clothing Store</option>
                 <option>Pharmacy</option>
                 <option>Restaurant</option>
+              </select>
+            </div>
+
+            {/* Assign To */}
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Assign To
+              </label>
+              <select
+                name="assignedUserId"
+                value={form.assignedUserId}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-300 rounded-md px-3 py-2
+                           focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                <option value="">Select Manager</option>
+                {MOCK_USERS.map((user) => (
+                  <option key={user.id} value={user.id}>
+                    {user.name} ({user.role})
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -94,7 +124,8 @@ export default function CreateStore() {
                 onChange={handleChange}
                 maxLength={6}
                 required
-                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full border border-gray-300 rounded-md px-3 py-2
+                           focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
@@ -108,7 +139,23 @@ export default function CreateStore() {
                 value={form.contact}
                 onChange={handleChange}
                 required
-                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full border border-gray-300 rounded-md px-3 py-2
+                           focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            {/* Operating Hours */}
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Operating Hours
+              </label>
+              <input
+                name="hours"
+                value={form.hours}
+                onChange={handleChange}
+                placeholder="9 AM - 9 PM"
+                className="w-full border border-gray-300 rounded-md px-3 py-2
+                           focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
           </div>
@@ -122,21 +169,8 @@ export default function CreateStore() {
               onChange={handleChange}
               rows={3}
               required
-              className="w-full border rounded-md px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-
-          {/* Operating Hours */}
-          <div>
-            <label className="block text-sm font-medium mb-1">
-              Operating Hours
-            </label>
-            <input
-              name="hours"
-              value={form.hours}
-              onChange={handleChange}
-              placeholder="9 AM - 9 PM"
-              className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 resize-none
+                         focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 

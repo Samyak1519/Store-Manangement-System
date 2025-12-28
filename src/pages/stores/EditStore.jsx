@@ -79,9 +79,7 @@ export default function EditStore() {
       {/* Card */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-300 ">
         <div className="px-6 py-4 rounded-t-xl ">
-          <p className="text-lg font-medium">
-            Update store information
-          </p>
+          <p className="text-lg font-medium">Update store information</p>
         </div>
 
         {/* Form */}
@@ -93,7 +91,7 @@ export default function EditStore() {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                className="w-full bg-white border border-gray-400 rounded-md
+                className="w-full bg-white border border-gray-300 rounded-md
                            px-3 py-2 text-sm shadow-sm
                            focus:outline-none focus:ring-2
                            focus:ring-indigo-500 focus:border-indigo-500"
@@ -105,7 +103,7 @@ export default function EditStore() {
                 name="type"
                 value={form.type}
                 onChange={handleChange}
-                className="w-full bg-white border border-gray-400 rounded-md
+                className="w-full bg-white border border-gray-300 rounded-md
                            px-3 py-2 text-sm shadow-sm
                            focus:outline-none focus:ring-2
                            focus:ring-indigo-500 focus:border-indigo-500"
@@ -124,7 +122,7 @@ export default function EditStore() {
                 value={form.pincode}
                 onChange={handleChange}
                 maxLength={6}
-                className="w-full bg-white border border-gray-400 rounded-md
+                className="w-full bg-white border border-gray-300 rounded-md
                            px-3 py-2 text-sm shadow-sm
                            focus:outline-none focus:ring-2
                            focus:ring-indigo-500 focus:border-indigo-500"
@@ -136,7 +134,7 @@ export default function EditStore() {
                 name="contact"
                 value={form.contact}
                 onChange={handleChange}
-                className="w-full bg-white border border-gray-400 rounded-md
+                className="w-full bg-white border border-gray-300 rounded-md
                            px-3 py-2 text-sm shadow-sm
                            focus:outline-none focus:ring-2
                            focus:ring-indigo-500 focus:border-indigo-500"
@@ -151,7 +149,7 @@ export default function EditStore() {
               value={form.address}
               onChange={handleChange}
               rows={3}
-              className="w-full bg-white border border-gray-400 rounded-md
+              className="w-full bg-white border border-gray-300 rounded-md
                          px-3 py-2 text-sm shadow-sm resize-none
                          focus:outline-none focus:ring-2
                          focus:ring-indigo-500 focus:border-indigo-500"
@@ -165,7 +163,7 @@ export default function EditStore() {
               value={form.hours}
               onChange={handleChange}
               placeholder="9 AM - 9 PM"
-              className="w-full bg-white border border-gray-400 rounded-md
+              className="w-full bg-white border border-gray-300 rounded-md
                          px-3 py-2 text-sm shadow-sm
                          focus:outline-none focus:ring-2
                          focus:ring-indigo-500 focus:border-indigo-500"

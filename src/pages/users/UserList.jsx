@@ -1,4 +1,4 @@
-import { ArrowLeft02Icon } from "@hugeicons/core-free-icons";
+import { ArrowLeft02Icon, PencilEdit02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
 import { useState } from "react";
@@ -64,8 +64,7 @@ export default function UserList() {
         <div className="flex items-center">
           <button
             onClick={() => navigate("/stores")}
-            className="text-sm  pr-3 py-2
-                     text-gray-700 cursor-pointer"
+            className="text-sm pr-3 py-2 text-black cursor-pointer"
           >
             <HugeiconsIcon icon={ArrowLeft02Icon} />
           </button>
@@ -96,16 +95,16 @@ export default function UserList() {
       </div>
 
       {/* Table */}
-      <div className="bg-white border rounded-lg overflow-hidden">
+      <div className="bg-white border border-gray-300 rounded-2xl overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-gray-50 border-b">
+          <thead className="bg-gray-50 border border-gray-300">
             <tr className="text-left text-gray-600">
               <th className="px-5 py-3">#</th>
               <th className="px-5 py-3">Name</th>
               <th className="px-5 py-3">Email</th>
               <th className="px-5 py-3">Role</th>
               <th className="px-5 py-3">Stores</th>
-              <th className="px-5 py-3 text-right">Action</th>
+              <th className="px-5 py-3 text-center">Action</th>
             </tr>
           </thead>
 
@@ -113,7 +112,7 @@ export default function UserList() {
             {filteredUsers.map((user, index) => (
               <tr
                 key={user.id}
-                className="border-b last:border-none hover:bg-gray-50"
+                className="border border-gray-300 last:border-none hover:bg-gray-50"
               >
                 <td className="px-5 py-4 text-gray-500">{index + 1}</td>
 
@@ -141,12 +140,15 @@ export default function UserList() {
                 </td>
 
                 <td className="px-5 py-4 text-right">
-                  <button
-                    onClick={() => navigate(`/users/${user.id}`)}
-                    className="px-4 py-1.5 text-sm border rounded-md hover:bg-gray-100 cursor-pointer"
-                  >
-                    View
-                  </button>
+                  <div className="flex justify-center">
+                    <button
+                      onClick={() => navigate(`/users/${user.id}/edit`)}
+                      className="p-2 border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer"
+                      title="Edit User"
+                    >
+                      <HugeiconsIcon icon={PencilEdit02Icon} size={18} className="text-gray-500" />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
