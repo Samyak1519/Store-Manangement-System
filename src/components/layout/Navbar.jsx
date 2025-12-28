@@ -1,14 +1,26 @@
 import { HugeiconsIcon } from "@hugeicons/react";
-import { UserCircleIcon } from "@hugeicons/core-free-icons";
+import { UserCircleIcon, Menu02Icon } from "@hugeicons/core-free-icons";
 
-export default function Navbar() {
+export default function Navbar({ onMenuClick }) {
   return (
-    <header className="h-16 bg-white border-b flex items-center justify-between px-6">
-      <h1 className="text-lg font-semibold text-gray-800">Dashboard</h1>
+    <header className="h-16 bg-white border-b flex items-center justify-between px-4 md:px-6">
+      <div className="flex items-center gap-3">
+        <button
+          onClick={onMenuClick}
+          className="md:hidden p-2 rounded hover:bg-gray-100"
+        >
+          <HugeiconsIcon icon={Menu02Icon} size={22} />
+        </button>
 
+        <h1 className="text-lg font-semibold text-gray-800">Dashboard</h1>
+      </div>
+
+      {/* Right: User */}
       <div className="flex items-center gap-2 text-gray-800">
         <HugeiconsIcon icon={UserCircleIcon} size={22} />
-        <span className="text-lg font-semibold">Hello, User</span>
+        <span className="hidden sm:block text-sm font-semibold">
+          Hello, User
+        </span>
       </div>
     </header>
   );
