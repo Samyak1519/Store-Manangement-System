@@ -8,7 +8,17 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ username, password });
+
+    // Hardcoded credentials
+    const VALID_EMAIL = "samyak@palmonas.com";
+    const VALID_PASSWORD = "password123";
+
+    if (username === VALID_EMAIL && password === VALID_PASSWORD) {
+      console.log("Login successful");
+      navigate("/dashboard/admin");
+    } else {
+      alert("Invalid username or password");
+    }
   };
 
   return (
