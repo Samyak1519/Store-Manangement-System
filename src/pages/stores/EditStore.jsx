@@ -1,3 +1,5 @@
+import { ArrowLeft02Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import DashboardLayout from "../../components/layout/Dashboard";
@@ -63,22 +65,23 @@ export default function EditStore() {
   return (
     <DashboardLayout>
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold">Edit Store</h1>
-
+      <div className="flex items-center mb-6">
         <button
           onClick={() => navigate("/stores")}
-          className="text-sm px-4 py-2 border rounded-md
-                     text-gray-700 hover:bg-gray-100 transition"
+          className="text-sm  pr-3 py-2
+                     text-gray-700 cursor-pointer"
         >
-          ← Back to Stores
+          <HugeiconsIcon icon={ArrowLeft02Icon} />
         </button>
+        <h1 className="text-2xl font-semibold">Edit Store</h1>
       </div>
 
       {/* Card */}
-      <div className="bg-white rounded-xl shadow-sm border">
-        <div className="px-6 py-4 border-b bg-gray-50">
-          <p className="text-md font-medium text-gray-600">Update store information</p>
+      <div className="bg-white rounded-xl shadow-sm border border-gray-300 ">
+        <div className="px-6 py-4 rounded-t-xl ">
+          <p className="text-lg font-medium">
+            Update store information
+          </p>
         </div>
 
         {/* Form */}
@@ -195,7 +198,7 @@ export default function EditStore() {
             <button
               type="submit"
               className="bg-indigo-600 text-white px-8 py-2.5 rounded-md
-                         hover:bg-indigo-700 transition"
+                         hover:bg-indigo-700 transition cursor-pointer"
             >
               Update Store
             </button>

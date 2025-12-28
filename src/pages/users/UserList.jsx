@@ -1,5 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { ArrowLeft02Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../../components/layout/Dashboard";
 
 const MOCK_USERS = [
@@ -57,13 +60,14 @@ export default function UserList() {
   return (
     <DashboardLayout>
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center">
           <button
-            onClick={() => navigate(-1)}
-            className="text-xl px-3 py-1.5 rounded-full hover:bg-gray-200 cursor-pointer"
+            onClick={() => navigate("/stores")}
+            className="text-sm  pr-3 py-2
+                     text-gray-700 cursor-pointer"
           >
-            ←
+            <HugeiconsIcon icon={ArrowLeft02Icon} />
           </button>
           <h1 className="text-2xl font-semibold">Users</h1>
         </div>
