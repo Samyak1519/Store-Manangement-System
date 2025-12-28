@@ -3,6 +3,7 @@ import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/RegisterPage.jsx";
 import AdminDashboard from "./pages/dashboard/AdminDashboard.jsx";
 import StoreList from "./pages/stores/StoreList.jsx";
+import EditStore from "./pages/stores/EditStore.jsx";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/dashboard/admin" element={<AdminDashboard />} />
       <Route path="/stores" element={<StoreList />} />
+      <Route path="/stores/:id/edit" element={<EditStore />} />
 
       <Route
         path="*"

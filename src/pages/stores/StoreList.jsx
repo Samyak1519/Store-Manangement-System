@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import DashboardLayout from "../../components/layout/Dashboard";
 
 const MOCK_STORES = [
@@ -74,6 +76,8 @@ const MOCK_STORES = [
 ];
 
 export default function StoreList() {
+  const navigate = useNavigate();
+
   return (
     <DashboardLayout>
       <h1 className="text-2xl font-semibold mb-6">Stores</h1>
@@ -113,14 +117,17 @@ export default function StoreList() {
             {/* Actions */}
             <div className="flex gap-3 mt-5">
               <button
+                onClick={() => navigate(`/stores/${store.id}`)}
                 className="text-sm px-4 py-1.5 border border-gray-300 rounded-md
-                           text-gray-700 hover:bg-gray-100 transition cursor-pointer"
+               text-gray-700 hover:bg-gray-100 transition"
               >
                 View
               </button>
+
               <button
+                onClick={() => navigate(`/stores/${store.id}/edit`)}
                 className="text-sm px-4 py-1.5 border border-gray-300 rounded-md
-                           text-gray-700 hover:bg-gray-100 transition cursor-pointer"
+               text-gray-700 hover:bg-gray-100 transition"
               >
                 Edit
               </button>
