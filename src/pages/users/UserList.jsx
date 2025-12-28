@@ -60,11 +60,11 @@ export default function UserList() {
   return (
     <DashboardLayout>
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center">
+      <div className="flex flex-col gap-4 mb-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-2">
           <button
             onClick={() => navigate("/stores")}
-            className="text-sm pr-3 py-2 text-black cursor-pointer"
+            className="p-2 rounded hover:bg-gray-100"
           >
             <HugeiconsIcon icon={ArrowLeft02Icon} />
           </button>
@@ -72,12 +72,12 @@ export default function UserList() {
         </div>
 
         {/* Filters */}
-        <div className="flex gap-2">
+        <div className="flex gap-2 overflow-x-auto">
           {["ALL", "MANAGER", "EMPLOYEE"].map((type) => (
             <button
               key={type}
               onClick={() => setFilter(type)}
-              className={`px-4 py-1.5 text-sm rounded-md border transition cursor-pointer
+              className={`px-4 py-1.5 text-sm rounded-md border whitespace-nowrap
                 ${
                   filter === type
                     ? "bg-indigo-600 text-white border-indigo-600"
@@ -94,10 +94,10 @@ export default function UserList() {
         </div>
       </div>
 
-      {/* Table */}
-      <div className="bg-white border border-gray-300 rounded-2xl overflow-hidden">
+      {/* ================= DESKTOP TABLE ================= */}
+      <div className="hidden md:block bg-white border border-gray-300 rounded-2xl overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-gray-50 border border-gray-300">
+          <thead className="bg-gray-50 border-b border-gray-300">
             <tr className="text-left text-gray-600">
               <th className="px-5 py-3">#</th>
               <th className="px-5 py-3">Name</th>
@@ -112,57 +112,88 @@ export default function UserList() {
             {filteredUsers.map((user, index) => (
               <tr
                 key={user.id}
-                className="border border-gray-300 last:border-none hover:bg-gray-50"
+                className="border-b border-gray-200 hover:bg-gray-50"
               >
                 <td className="px-5 py-4 text-gray-500">{index + 1}</td>
-
                 <td className="px-5 py-4 font-medium">{user.name}</td>
-
                 <td className="px-5 py-4 text-gray-600">{user.email}</td>
-
                 <td className="px-5 py-4">
-                  <span
-                    className={`px-2 py-1 rounded text-xs font-medium
-                      ${
-                        user.role === "ADMIN"
-                          ? "bg-indigo-100 text-indigo-700"
-                          : user.role === "MANAGER"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-gray-100 text-gray-700"
-                      }`}
-                  >
-                    {user.role}
-                  </span>
+                  <RoleBadge role={user.role} />
                 </td>
-
                 <td className="px-5 py-4 text-gray-600">
                   {user.stores.length ? user.stores.join(", ") : "—"}
                 </td>
-
-                <td className="px-5 py-4 text-right">
-                  <div className="flex justify-center">
-                    <button
-                      onClick={() => navigate(`/users/${user.id}/edit`)}
-                      className="p-2 border border-gray-300 rounded-md hover:bg-gray-100 cursor-pointer"
-                      title="Edit User"
-                    >
-                      <HugeiconsIcon icon={PencilEdit02Icon} size={18} className="text-gray-500" />
-                    </button>
-                  </div>
+                <td className="px-5 py-4 text-center">
+                  <button
+                    onClick={() => navigate(`/users/${user.id}/edit`)}
+                    className="p-2 border border-gray-300 rounded-md hover:bg-gray-100"
+                  >
+                    <HugeiconsIcon
+                      icon={PencilEdit02Icon}
+                      size={18}
+                      className="text-gray-600"
+                    />
+                  </button>
                 </td>
               </tr>
             ))}
-
-            {filteredUsers.length === 0 && (
-              <tr>
-                <td colSpan="6" className="text-center py-8 text-gray-500">
-                  No users found
-                </td>
-              </tr>
-            )}
           </tbody>
         </table>
       </div>
+
+      {/* ================= MOBILE CARDS ================= */}
+      <div className="md:hidden space-y-3">
+        {filteredUsers.map((user, index) => (
+          <div
+            key={user.id}
+            className="bg-white border border-gray-300 rounded-xl p-4"
+          >
+            <div className="flex justify-between items-start">
+              <div>
+                <p className="text-sm text-gray-500">#{index + 1}</p>
+                <h3 className="font-semibold">{user.name}</h3>
+                <p className="text-sm text-gray-600">{user.email}</p>
+              </div>
+
+              <button
+                onClick={() => navigate(`/users/${user.id}/edit`)}
+                className="p-2 border border-gray-300 rounded-md hover:bg-gray-100"
+              >
+                <HugeiconsIcon icon={PencilEdit02Icon} size={18} />
+              </button>
+            </div>
+
+            <div className="mt-3 flex items-center justify-between">
+              <RoleBadge role={user.role} />
+              <span className="text-xs text-gray-600">
+                {user.stores.length ? user.stores.join(", ") : "—"}
+              </span>
+            </div>
+          </div>
+        ))}
+
+        {filteredUsers.length === 0 && (
+          <p className="text-center text-gray-500 py-6">No users found</p>
+        )}
+      </div>
     </DashboardLayout>
+  );
+}
+
+/* Role Badge Component */
+function RoleBadge({ role }) {
+  return (
+    <span
+      className={`px-2 py-1 rounded text-xs font-medium
+        ${
+          role === "ADMIN"
+            ? "bg-indigo-100 text-indigo-700"
+            : role === "MANAGER"
+            ? "bg-green-100 text-green-700"
+            : "bg-gray-100 text-gray-700"
+        }`}
+    >
+      {role}
+    </span>
   );
 }
