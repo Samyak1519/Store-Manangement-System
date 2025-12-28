@@ -2,20 +2,18 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/RegisterPage.jsx";
 import AdminDashboard from "./pages/dashboard/AdminDashboard.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import CreateStore from "./pages/stores/CreateStore.jsx";
 import EditStore from "./pages/stores/EditStore.jsx";
 import StoreList from "./pages/stores/StoreList.jsx";
 import UserList from "./pages/users/UserList.jsx";
-import CreateStore from "./pages/stores/CreateStore.jsx";
-import Navbar from "./components/layout/Navbar.jsx";
-import Sidebar from "./components/layout/Sidebar.jsx";
-import ErrorPage from "./pages/ErrorPage.jsx";
 
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />
-
       <Route path="/login" element={<Login />} />
+
       <Route path="/register" element={<Register />} />
       <Route path="/dashboard/admin" element={<AdminDashboard />} />
 

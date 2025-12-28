@@ -11,9 +11,12 @@ export default function Login() {
 
     // Hardcoded credentials
     const VALID_EMAIL = "samyak@palmonas.com";
-    const VALID_PASSWORD = "password123";
+    const VALID_PASSWORD = "password@123";
 
-    if (username === VALID_EMAIL && password === VALID_PASSWORD) {
+    const enteredEmail = username.trim().toLowerCase();
+    const enteredPassword = password.trim();
+
+    if (enteredEmail === VALID_EMAIL && enteredPassword === VALID_PASSWORD) {
       console.log("Login successful");
       navigate("/dashboard/admin");
     } else {
