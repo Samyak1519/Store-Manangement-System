@@ -1,10 +1,9 @@
+import { ArrowLeft02Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../../components/layout/Dashboard";
-import { ArrowLeft02Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
 
-/* Mock users for assignment (Admin assigns store) */
 const MOCK_USERS = [
   { id: 1, name: "John Manager", role: "MANAGER" },
   { id: 2, name: "Rahul Manager", role: "MANAGER" },
@@ -42,7 +41,6 @@ export default function CreateStore() {
 
   return (
     <DashboardLayout>
-      {/* Header */}
       <div className="flex items-center gap-2 mb-6">
         <button
           onClick={() => navigate(-1)}
@@ -53,12 +51,9 @@ export default function CreateStore() {
         <h1 className="text-2xl font-semibold">Add Store</h1>
       </div>
 
-      {/* Form Card */}
       <div className="max-w-full bg-white border border-gray-200 rounded-xl p-6 ">
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Store Name */}
             <div>
               <label className="block text-sm font-medium mb-1">
                 Store Name
@@ -72,8 +67,6 @@ export default function CreateStore() {
                            focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
-
-            {/* Store Type */}
             <div>
               <label className="block text-sm font-medium mb-1">
                 Store Type
@@ -93,7 +86,6 @@ export default function CreateStore() {
               </select>
             </div>
 
-            {/* Assign To */}
             <div>
               <label className="block text-sm font-medium mb-1">
                 Assign To
@@ -115,7 +107,6 @@ export default function CreateStore() {
               </select>
             </div>
 
-            {/* Pincode */}
             <div>
               <label className="block text-sm font-medium mb-1">Pincode</label>
               <input
@@ -129,7 +120,6 @@ export default function CreateStore() {
               />
             </div>
 
-            {/* Contact */}
             <div>
               <label className="block text-sm font-medium mb-1">
                 Contact Number
@@ -144,7 +134,6 @@ export default function CreateStore() {
               />
             </div>
 
-            {/* Operating Hours */}
             <div>
               <label className="block text-sm font-medium mb-1">
                 Operating Hours
@@ -160,7 +149,6 @@ export default function CreateStore() {
             </div>
           </div>
 
-          {/* Address */}
           <div>
             <label className="block text-sm font-medium mb-1">Address</label>
             <textarea
@@ -174,7 +162,6 @@ export default function CreateStore() {
             />
           </div>
 
-          {/* Status */}
           <div>
             <label className="block text-sm font-medium mb-2">Status</label>
             <div className="flex gap-4">
@@ -195,8 +182,6 @@ export default function CreateStore() {
               ))}
             </div>
           </div>
-
-          {/* Submit */}
           <div className="pt-4">
             <button
               type="submit"

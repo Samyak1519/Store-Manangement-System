@@ -1,6 +1,5 @@
+import { AddCircleIcon, Delete02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Delete02Icon } from "@hugeicons/core-free-icons";
-import { AddCircleIcon } from "@hugeicons/core-free-icons";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -94,7 +93,6 @@ export default function StoreList() {
 
   return (
     <DashboardLayout>
-      {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-semibold">Stores</h1>
 

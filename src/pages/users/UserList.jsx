@@ -59,7 +59,6 @@ export default function UserList() {
 
   return (
     <DashboardLayout>
-      {/* Header */}
       <div className="flex flex-col gap-4 mb-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-2">
           <button
@@ -71,7 +70,6 @@ export default function UserList() {
           <h1 className="text-2xl font-semibold">Users</h1>
         </div>
 
-        {/* Filters */}
         <div className="flex gap-2 overflow-x-auto">
           {["ALL", "MANAGER", "EMPLOYEE"].map((type) => (
             <button
@@ -94,7 +92,6 @@ export default function UserList() {
         </div>
       </div>
 
-      {/* ================= DESKTOP TABLE ================= */}
       <div className="hidden md:block bg-white border border-gray-300 rounded-2xl overflow-hidden">
         <table className="w-full text-sm">
           <thead className="bg-gray-50 border-b border-gray-300">
@@ -141,7 +138,6 @@ export default function UserList() {
         </table>
       </div>
 
-      {/* ================= MOBILE CARDS ================= */}
       <div className="md:hidden space-y-3">
         {filteredUsers.map((user, index) => (
           <div
@@ -180,7 +176,6 @@ export default function UserList() {
   );
 }
 
-/* Role Badge Component */
 function RoleBadge({ role }) {
   return (
     <span

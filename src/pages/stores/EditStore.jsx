@@ -64,7 +64,6 @@ export default function EditStore() {
 
   return (
     <DashboardLayout>
-      {/* Header */}
       <div className="flex items-center mb-6">
         <button
           onClick={() => navigate("/stores")}
@@ -76,15 +75,12 @@ export default function EditStore() {
         <h1 className="text-2xl font-semibold">Edit Store</h1>
       </div>
 
-      {/* Card */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-300 ">
         <div className="px-6 py-4 rounded-t-xl ">
           <p className="text-lg font-medium">Update store information</p>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          {/* Two-column layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Field label="Store Name">
               <input
@@ -142,7 +138,6 @@ export default function EditStore() {
             </Field>
           </div>
 
-          {/* Address */}
           <Field label="Address">
             <textarea
               name="address"
@@ -156,7 +151,6 @@ export default function EditStore() {
             />
           </Field>
 
-          {/* Operating Hours */}
           <Field label="Operating Hours">
             <input
               name="hours"
@@ -170,7 +164,6 @@ export default function EditStore() {
             />
           </Field>
 
-          {/* Status */}
           <Field label="Status">
             <div className="flex gap-4">
               {["ACTIVE", "INACTIVE"].map((status) => (
@@ -191,7 +184,6 @@ export default function EditStore() {
             </div>
           </Field>
 
-          {/* Submit */}
           <div className="pt-2">
             <button
               type="submit"
@@ -207,7 +199,6 @@ export default function EditStore() {
   );
 }
 
-/* Field wrapper */
 function Field({ label, children }) {
   return (
     <div>
